@@ -43,7 +43,7 @@ export class CoreLoginReconnectPage {
     protected siteConfig: any;
     protected isLoggedOut: boolean;
     protected siteId: string;
-
+    protected userSiteLogourl: string;
     constructor(private navCtrl: NavController, navParams: NavParams, fb: FormBuilder, private appProvider: CoreAppProvider,
         private sitesProvider: CoreSitesProvider, private loginHelper: CoreLoginHelperProvider,
         private domUtils: CoreDomUtilsProvider) {
@@ -81,7 +81,7 @@ export class CoreLoginReconnectPage {
             this.username = site.infos.username;
             this.siteUrl = site.infos.siteurl;
             this.siteName = site.getSiteName();
-
+            this.userSiteLogourl = site.infos.sitelogourl;
             // Check logoURL if user avatar is not set.
             if (this.site.avatar.startsWith(site.infos.siteurl + '/theme/image.php')) {
                 this.site.avatar = false;

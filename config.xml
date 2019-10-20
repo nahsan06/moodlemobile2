@@ -2,7 +2,7 @@
 <widget id="net.classnet.classnetmobile" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Classnet</name>
     <description>Classnet Mobile app</description>
-    <author email="service@classnet.net" href="http://www.classnet.net">Classnet Mobile team</author>
+    <author email="service@classnet.net" href="https://www.classnet.net">Classnet Mobile team</author>
     <content src="index.html" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />

@@ -49,7 +49,7 @@ export class CoreLoginCredentialsPage {
     protected viewLeft = false;
     protected siteId: string;
     protected urlToOpen: string;
-
+    private classnetSiteName: string; 
     constructor(private navCtrl: NavController, navParams: NavParams, fb: FormBuilder, private appProvider: CoreAppProvider,
             private sitesProvider: CoreSitesProvider, private loginHelper: CoreLoginHelperProvider,
             private domUtils: CoreDomUtilsProvider, private translate: TranslateService,
@@ -71,7 +71,7 @@ export class CoreLoginCredentialsPage {
     ionViewDidLoad(): void {
         this.treatSiteConfig();
         this.isFixedUrlSet = this.loginHelper.isFixedUrlSet();
-
+        this.classnetSiteName = 'ClassNet';
         if (this.isFixedUrlSet) {
             // Fixed URL, we need to check if it uses browser SSO login.
             this.checkSite(this.siteUrl);
