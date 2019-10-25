@@ -19,6 +19,7 @@ import { CoreAppProvider } from '@providers/app';
 import { CoreEventsProvider } from '@providers/events';
 import { CoreSitesProvider } from '@providers/sites';
 import { CoreDomUtilsProvider } from '@providers/utils/dom';
+import { CoreUtilsProvider } from '@providers/utils/utils';
 import { CoreLoginHelperProvider } from '../../providers/helper';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoreConfigConstants } from '../../../../configconstants';
@@ -52,7 +53,7 @@ export class CoreLoginCredentialsPage {
     private classnetSiteName: string; 
     constructor(private navCtrl: NavController, navParams: NavParams, fb: FormBuilder, private appProvider: CoreAppProvider,
             private sitesProvider: CoreSitesProvider, private loginHelper: CoreLoginHelperProvider,
-            private domUtils: CoreDomUtilsProvider, private translate: TranslateService,
+            private domUtils: CoreDomUtilsProvider, private translate: TranslateService, private utils: CoreUtilsProvider,
             private eventsProvider: CoreEventsProvider) {
 
         this.siteUrl = navParams.get('siteUrl');
@@ -239,9 +240,11 @@ export class CoreLoginCredentialsPage {
      * Forgotten password button clicked.
      */
     forgottenPassword(): void {
-        this.loginHelper.forgottenPasswordClicked(this.navCtrl, this.siteUrl, this.credForm.value.username, this.siteConfig);
-    }
-
+     this.loginHelper.forgottenPasswordClicked(this.navCtrl, this.siteUrl, this.credForm.value.username, this.siteConfig); 
+        
+    } 
+    
+    
     /**
      * An OAuth button was clicked.
      *
@@ -257,6 +260,12 @@ export class CoreLoginCredentialsPage {
      * Signup button was clicked.
      */
     signup(): void {
-        this.navCtrl.push('CoreLoginEmailSignupPage', { siteUrl: this.siteUrl });
+//        this.navCtrl.push('CoreLoginEmailSignupPage', { siteUrl: this.siteUrl });
+        if (this.siteUrl) {
+             // URL set, open it.
+            this.utils.openInApp(this.siteUrl + "/classnet/signin/classnet_signup.php");
+            return;
+        }
+    
     }
 }

@@ -74,7 +74,7 @@ export class CoreAppProvider {
     protected mainMenuId = 0;
     protected mainMenuOpen: number;
     protected forceOffline = false;
-
+    protected statusbarbg = '#2A8ACC';
     constructor(dbProvider: CoreDbProvider, private platform: Platform, private keyboard: Keyboard, private appCtrl: App,
             private network: Network, logger: CoreLoggerProvider, private events: CoreEventsProvider, zone: NgZone,
             private menuCtrl: MenuController, private statusBar: StatusBar) {
@@ -543,16 +543,16 @@ export class CoreAppProvider {
         if (typeof CoreConfigConstants.statusbarbgios == 'string' && this.platform.is('ios')) {
             // IOS Status bar properties.
             this.statusBar.overlaysWebView(false);
-            this.statusBar.backgroundColorByHexString(CoreConfigConstants.statusbarbgios);
+            this.statusBar.backgroundColorByHexString(this.statusbarbg);
             CoreConfigConstants.statusbarlighttextios ? this.statusBar.styleLightContent() : this.statusBar.styleDefault();
         } else if (typeof CoreConfigConstants.statusbarbgandroid == 'string' && this.platform.is('android')) {
             // Android Status bar properties.
-            this.statusBar.backgroundColorByHexString(CoreConfigConstants.statusbarbgandroid);
+            this.statusBar.backgroundColorByHexString(this.statusbarbg);
             CoreConfigConstants.statusbarlighttextandroid ? this.statusBar.styleLightContent() : this.statusBar.styleDefault();
         } else if (typeof CoreConfigConstants.statusbarbg == 'string') {
             // Generic Status bar properties.
             this.platform.is('ios') && this.statusBar.overlaysWebView(false);
-            this.statusBar.backgroundColorByHexString(CoreConfigConstants.statusbarbg);
+            this.statusBar.backgroundColorByHexString(this.statusbarbg);
             CoreConfigConstants.statusbarlighttext ? this.statusBar.styleLightContent() : this.statusBar.styleDefault();
         } else {
             // Default Status bar properties.
