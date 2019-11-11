@@ -8,6 +8,7 @@
         <a ion-item core-user-link [userId]="siteInfo.userid">
             <ion-avatar core-user-avatar [user]="siteInfo" item-start></ion-avatar>
             <p>{{siteInfo.fullname}}</p>
+            <!--ion-note>{{siteUrl}}</ion-note-->
         </a>
         <ion-item-divider></ion-item-divider>
         <ion-item text-center *ngIf="(!handlers || !handlers.length) && !handlersLoaded">
